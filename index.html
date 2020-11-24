@@ -13,107 +13,132 @@
 
 	<h4>Design process</h4>
 	<ol>
-		<li>Gathered project requirements and analyzed the given datasets, csv files.</li>
+		<li>Gathered project requirements and analyzed the given datasets, csv files and json file.</li>
 		<li>Brainstormed various ideas to represent the datasets and map.</li> 
 		<li>Made initial paper prototypes and sequential process for interactions.</li>
 		<li>Started to translate the designs into code using HTML layouts and other elements.</li>
-		<li>Identified and correlated different datasets to develop map and graph interactions using buttons.</li>
-		<li>Refined the initial plan and merged different graphs into one to overlap datasets to gather more insights.</li>
+		<li>Identified and different datasets to develop map and bar graph, pie charts and their interactions with map.</li>
 		<li>Performed an end-to-end user testing to cross check functionalities and how to formulate insights from visualizations.</li>
+		
 	</ol>
 
-	<img src="documentation/images/merge.png" alt="Final visualizations" style="width:1400px;height:300px;" class="center">
+	<img src="../documentation/images/0. final viz.png" alt="Final visualizations" style="width:1000px;height:300px;" class="center">
 		<p class="center1"><i>Figure 1: Final Visualizations</i></p>
 
 	<h4>Initial Design Sketches and Ideation</h4>
 
-		<p>I gathered the project requirements and segregated them into sections. Made a list of elements that need to go on to the 
-			interactive visualization page. This way, I was following a sequential way to implement each element step by step. Looking 
-			at the requirements, I initially made paper sketch to put three separate graphs for showing Total deaths, deaths by age, 
-			deaths by gender to the left and Map on to the right side. </p>
+		<p>I gathered the project requirements and segregated them into sections. 
+			Made a list of elements that need to go on to the interactive visualization page. 
+			This way, I was following a sequential way to implement each element step by step. 
+			Looking at the requirements, I initially made paper sketch to put three separate graphs 
+			(one Bar chart and two Pie charts) for showing Total deaths, deaths by age, deaths by 
+			gender to the right and Map on to the left side.  </p>
 
-		<img src="documentation/images/papersketch.png" alt="2.paper sketch" style="width:500px;height:300px;" class="center">
+		<img src="../documentation/images/1. papersketch.jpeg" alt="1. papersketch" style="width:500px;height:300px;" class="center">
 		<p class="center1"><i>Figure 2: Paper sketch of initial plan.</i></p>
 
 	<h4>Implementation</h4>
 
 		<p>Soon after laying out the plan and layout sketch, I started to write the skeleton code for the visualization. 
-			Initial visualization contains a small description of the project, a link to documentation and video. 
-			A map with the streets from the json in green color lines. I chose to put the map in green colored lines 
-			as it represents the landscape and green lines would be a fit for the streets.  </p>
+			Initial visualization contains a project title and map name, a link to documentation and video. A map with the 
+			streets from the json in green color lines. I chose to put the map in green colored lines as it represents the 
+			landscape and green lines would be a fit for the streets.   </p>
 
-		<img src="documentation/images/Basic Implementation of Map.png" alt="Basic Implementation of Map" style="width:700px;height:400px;" class="center" >
+		<img src="../documentation/images/2. Basic Implementation of Map.png" alt="2. Basic Implementation of Map" style="width:400px;height:400px;" class="center" >
 		<p class="center1"><i>Figure 3: Basic Implementation of Map</i></p>
 
-		<p>Then imported the pumps.csv to display the locations of the pumps on the map and showed the pumps as dark red squares. 
-			The reason to select dark red color is to indicate the hazard points as the cholera transmission was initiated at these locations. 
-			Similarly, imported the deaths_age_sex.csv to point the deaths on the map. I have chosen to display the deaths on the map with blue circles. 
-			This way I used tones of the three primary colors on the map. </p>
+		<p>Then imported the pumps.csv to display the locations of the pumps on the map and showed 
+			the pumps as blue squares. The reason to select blue color is to indicate the hazard water 
+			pumps as the cholera transmission was initiated at these locations. Similarly, imported the 
+			deaths_age_sex.csv to point the deaths on the map. I have chosen to display the deaths on the 
+			map with orange(#ee6352) circles. This way I used tones of the three primary colors on the map. </p>
 
-		<img src="documentation/images/Implemented Map and pumps .png" alt="Implemented Map and pumps" style="width:700px;height:400px;" class="center" >
+		<img src="../documentation/images/3. Implemented Map and pumps .png" alt="3. Implemented Map and pumps " style="width:400px;height:400px;" class="center" >
 		<p class="center1"><i>Figure 4: Implemented Map and pumps</i></p>
-		<img src="documentation/images/Map is visualized with Total deaths and Pumps.png" alt="Map is visualized with Total deaths and Pumps" style="width:700px;height:400px;" class="center" >
+
+		<img src="../documentation/images/4. Map is visualized with Total deaths and Pumps.png" alt="4. Map is visualized with Total deaths and Pumps" style="width:400px;height:400px;" class="center" >
 		<p class="center1"><i>Figure 5: Map is visualized with Total deaths and Pumps</i></p>
 
-		<p>Looking back at the datasets, I initially planned to make three different graphs to show the deaths, age differences and gender. 
-			However, I opted to implement only one graph and overlapping the ages and gender lines on to the death by day. 
-			<b>Rationale:</b> Upon loading the coordinates and demographics for each death. I assumed these data to be provided in the order 
-			in which the victim died. This way I can correlate it to deathdays.csv and get some better insights on deaths by different ages and genders on a particular day. 
-			I planned to implement a single graph with three different buttons. When the user clicks on age-based button or gender based, the line graphs shall be 
-			overlapped on the deaths per day graph. </p>
+		<p>Now that map is plotted along with all the required elements, I have added the names of the major streets by appending 
+			the text in the .svg by rotating and placing it on the map. After brief research on the pan and zoom functionality in d3, 
+			I found that D3 has an inbuilt function to add the zoom feature to the map. Upon little research in stack overflow, 
+			I found the correct method to implement the zoom as well. </p>
 
-		<img src="documentation/images/Revised visualization screen design.png" alt="Revised visualization screen design" style="width:700px;height:400px;" class="center" >
-		<p class="center1"><i>Figure 6: Revised visualization screen design</i></p>
+		<img src="../documentation/images/5. Map with deaths .png" alt="5. Map with deaths " style="width:400px;height:400px;" class="center" >
+		<p class="center1"><i>Figure 6: Map with street names and zoom </i></p>
 
-		<p>This way, I went ahead and implemented a single bar graph using the same blue color used for circles (total deaths) on the map. 
-			Once this is done, I implemented the age-based button and created 6 live graphs. As ages are ordered data, I chose the colormap 
-			to be varying monotonically in luminance. While the gender-based visualization comes under categorical data, I have put male as
-			 blue and female as pink with different hue.  </p>
+		<p>Now I started to work on implementing the bar graphs to represent the cholera deaths per day from the deathdays.csv. 
+			I used the same color for the bar which I used to show the deaths on the map. Also, I decided to display all the dates 
+			by adjusting the x axis by tilting them vertically. This gave me the flexibility to easily recognize each date and month 
+			and how the deaths peaked in certain days. Also, I believe that the total number of deaths on the top of each bar helps 
+			us to easily see the number of deaths on that particular day. This gives the user an exact figure.    </p>
 
-		<img src="documentation/images/Implemented a bar-graph and three buttons on top.png" alt="Implemented a bar-graph and three buttons on top" style="width:700px;height:400px;" class="center" >
-		<p class="center1"><i>Figure 7: Implemented a bar-graph and three buttons on top</i></p>
+		<img src="../documentation/images/6. bar chart.png" alt="6. bar chart" style="width:700px;height:400px;" class="center" >
+		<p class="center1"><i>Figure 7: Implemented bar chart</i></p>
 
-		<img src="documentation/images/Implemented Age based line graph with monotonically varying luminance.png" alt="Implemented Age based line graph with monotonically varying luminance" style="width:700px;height:400px;" class="center" >
-		<img src="documentation/images/mono colors.png" alt="mono colors" style="width:500px;height:200px;" class="center" >
-		<p class="center1"><i>Figure 8: Implemented Age based line graph with monotonically varying luminance</i></p>
+		<p>Now that I have implemented one json and one csv file from the given data. 
+			I planned to show the gender and age groups in two separate pie charts from loading the third 
+			deaths_age_sex.csv file. For this I planned to show each pie chart upon clicking a button on the screen. 
+			So, I have created three buttons – Age group, Gender and a Reset to collapse either of the charts.   </p>	
 
-		<img src="documentation/images/Implemented gender-based line graph with different hue colors.png" alt="Implemented gender-based line graph with different hue colors" style="width:700px;height:400px;" class="center" >
-		<img src="documentation/images/different colors.png" alt="different colors" style="width:300px;height:100px;" class="center" >
-		<p class="center1"><i>Figure 9: Implemented gender-based line graph with different hue colors</i></p>
+		<img src="../documentation/images/7. Buttons.png" alt="7. Buttons" style="width:700px;height:400px;" class="center" >
+		<p class="center1"><i>Figure 8: Implemented buttons to show pie charts</i></p>
+
+		<img src="../documentation/images/8. Age groups.png" alt="Implemented the pie charts for gender based and age-based groups" style="width:600px;height:400px;" class="center" >
+		<img src="../documentation/images/9. Gender.png" alt="Implemented the pie charts for gender based and age-based groups" style="width:600px;height:400px;" class="center" >
+		<p class="center1"><i>Figure 9: Implemented the pie charts for gender based and age-based groups</i></p>
+
+		<p>I used the same pie chart colors to implement the gender based and age- based deaths on the map. 
+			This way, I initially linked the pie charts, bar chart and map with different colors. </p>	
+
+		<img src="../documentation/images/10. age group map.png" alt="10." style="width:600px;height:400px;" class="center" >
+		<img src="../documentation/images/11. gender map.png" alt="11. gender map" style="width:600px;height:400px;" class="center" >
+		<p class="center1"><i>Figure 10: Implemented the same colors on pie chart and map</i></p>
+
+		<img src="../documentation/images/12. Color palette 1.png" alt="12. Color palette 1" style="width:600px;height:400px;" class="center" >
+		<img src="../documentation/images/13. Color palette 2.png" alt="13. Color palette 2" style="width:300px;height:300px;" class="center" >
+		<p class="center1"><i>Figure 11: Colors on pie chart Age groups, gender and map</i></p>
+
+		<p>I implemented a function to link the bar chart and deaths on the map with an incremental death count to be shown on the map. 
+			However, I found it more important to see the different categories of people on the map. So, I went ahead to link both the 
+			pie charts to the map. I created the on.moused,in and out functions to make the interactions between the pie charts and map.  </p>	
+
+		<img src="../documentation/images/14. Bar chart hover and total deaths.png" alt="14. Bar chart hover and total deaths" style="width:600px;height:400px;" class="center" >
+		<p class="center1"><i>Figure 12: Implemented hover on bar graph to show total count of deaths till date</i></p>
+
+		<img src="../documentation/images/15. Gender and map link.png" alt="15. Gender and map link" style="width:400px;height:400px;" class="center" >
+		<p class="center1"><i>Figure 13: Implemented gender-based line graph with different hue colors</i></p>
+
+		<img src="../documentation/images/16. Age group and map link.png" alt="16. Age group and map link" style="width:400px;height:400px;" class="center" >
+		<p class="center1"><i>Figure 14: Implemented age-based line graph with different hue colors</i></p>
+
 
 	<h4>Rationale for arranging charts</h4>
 
-		<p>Overlapping of graphs over the timeline gives the user the ability to visualize the trend of deaths in different locations on specific days.
-			Also, by implementing the hover functionality over the bar graph gave the opportunity to the user to analyze and see the deaths on a particular
-			 day with respect to ages or gender. </p>
+		<p>My rationale on linking the pie charts to the map is to give Dr. John snow an easy way to identify the different age groups 
+			and how many of them got affected all over the region. I also showed the bar chart hover to identify the total number of 
+			deaths till that date individually. This way he can establish a detail relevance between the date of deaths, age group and 
+			gender on map and prove an even more better hypothesis of water contamination in London. </p>
 
-		<img src="documentation/images/Hover on the bar-graph shows the deaths on map till that date..png" alt="Hover on the bar-graph shows the deaths on map till that date." style="width:700px;height:400px;" class="center" >
-		<p class="center1"><i>Figure 10: Hover on the bar-graph shows the deaths on map till that date.</i></p>
 		
 	<h4>Discoveries</h4>
 	
 	<ol>
 		<li>Which age groups have more deaths? </li>
-		<p>One of the interesting discoveries is that especially two age groups (0-10) and > 80 were highly vulnerable to cholera epidemic in London. 
-			When I selected only these age groups, I observed that they are the highest in number who died in August and September months. 
-			While other age groups are less in number </p>
+		<p>One of the interesting discoveries is that especially two age groups (0-10) and > 80 were highly vulnerable to cholera epidemic in London.
+			 When I selected only these age groups, I observed that they are the highest in number who died near the Broad street pump. 
+			 While other age groups are less in number comparatively. </p>
 	
-	  		<img src="documentation/images/Selected only two age groups which are highly vulnerable.png" alt="Selected only two age groups which are highly vulnerable" style="width:700px;height:400px;" class="center" >
-			<p class="center1"><i>Figure 11: Selected only two age groups which are highly vulnerable</i></p>
+	  		<img src="../documentation/images/17. discovery 1.png" alt="Selected only two age groups which are highly vulnerable" style="width:400px;height:400px;" class="center" >
+			<p class="center1"><i>Figure 12: Selected only two age groups which are highly vulnerable</i></p>
 
 	
 		<li>Which gender have more deaths? </li>
-		<p>Upon looking at the graph, deaths of both male and female looks equal on most of the dataset. 
-			However, females were more vulnerable to cholera as the number of deaths spiked more than men during the peak months of August. </p>
+		<p>Upon looking at the pie chart, deaths of both male and female looks equal on most of the dataset. 
+			However, females were more vulnerable to cholera as their count is little more than males. </p>
 		
-			<img src="documentation/images/Females are little more vulnerable than Males.png" alt="Females are little more vulnerable than Males" style="width:700px;height:400px;" class="center" >
-			<p class="center1"><i>Figure 12: Females are little more vulnerable than Males</i></p>
-			
-		<li>Who were the early victims of cholera epidemic in the map location? </li>
-		<p>Upon hovering on to 31st August, We can specifically see light and dark purple colors, indicating that the early victims were children below age 10 and elderly from 61to 80. </p>
-			
-			<img src="documentation/images/Early victims were children and elder people.png" alt="Early victims were children and elder people" style="width:700px;height:400px;" class="center" >
-			<p class="center1"><i>Figure 13: Early victims were children and elder people</i></p>
+			<img src="../documentation/images/18. discovery 2.png" alt="Females are little more vulnerable than Males" style="width:400px;height:400px;" class="center" >
+			<p class="center1"><i>Figure 13: Females are little more vulnerable than Males</i></p>
 	</ol>
 
 	<h4>Color Blindness Test</h4>
@@ -122,10 +147,10 @@
 			I have carefully chosen the graphs and color coded which can be identified in both the cases. The results of color blindness test simulations were convincing as all the
 			 elements in the graph and on map can be easily differentiated in both cases with ease.  </p>
 
-		<img src="documentation/images/Protanopia.png" alt="Differentiation of ages in Protanopia case" style="width:700px;height:400px;" class="center" >
+		<img src="../documentation/images/19. Protanopia.png" alt="Differentiation of ages in Protanopia case" style="width:700px;height:400px;" class="center" >
 		<p class="center1"><i>Figure 14: Differentiation of ages in Protanopia case</i></p>
 
-		<img src="documentation/images/Deuteranopia.png" alt="Differentiation of gender in Deuteranopia case" style="width:700px;height:400px;" class="center" >
+		<img src="../documentation/images/20. Deuteranopia.png" alt="Differentiation of gender in Deuteranopia case" style="width:700px;height:400px;" class="center" >
 		<p class="center1"><i>Figure 15: Differentiation of gender in Deuteranopia case</i></p>
 
 	<h4>References</h4>
@@ -136,11 +161,17 @@
 		<li><a href="https://www.w3schools.com/js">https://www.w3schools.com/js/</a></li>
 		<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">https://developer.mozilla.org/en-US/docs/Web/JavaScript</a></li>
 		<li><a href="https://github.com/d3/d3">https://github.com/d3/d3 </a></li>
-		<li><a href="http://www.rgblind.se/url">http://www.rgblind.se/url</a></li>
-		<li><a href="https://coolors.co/">https://coolors.co/</a></li>
 		<li><a href="http://bl.ocks.org/phil-pedruco/9032348">http://bl.ocks.org/phil-pedruco/9032348</a></li>
 		<li><a href="https://bl.ocks.org/d3noob/a22c42db65eb00d4e369">https://bl.ocks.org/d3noob/a22c42db65eb00d4e369</a></li>
-
+		<li><a href="https://www.d3-graph-gallery.com/graph/pie_annotation.html">https://www.d3-graph-gallery.com/graph/pie_annotation.html</a></li>
+		<li><a href="https://www.d3-graph-gallery.com/graph/custom_axis.html">https://www.d3-graph-gallery.com/graph/custom_axis.html</a></li>
+		<li><a href="http://cs.wellesley.edu/~mashups/pages/am5/d3tutorial2.html">http://cs.wellesley.edu/~mashups/pages/am5/d3tutorial2.html</a></li>
+		<li><a href="https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js">https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js</a></li>
+		<li><a href="http://bl.ocks.org/caged/6476579">http://bl.ocks.org/caged/6476579</a></li>
+		<li><a href="http://bl.ocks.org/cflavs/695d3215ccbce135d3bd">http://bl.ocks.org/cflavs/695d3215ccbce135d3bd</a></li>
+		<li><a href="https://stackoverflow.com/questions/38459765/d3-zoom-and-pan-upgrade-to-version-4">https://stackoverflow.com/questions/38459765/d3-zoom-and-pan-upgrade-to-version-4</a></li>
+		<li><a href="http://www.rgblind.se/url">http://www.rgblind.se/url</a></li>
+		<li><a href="https://coolors.co/">https://coolors.co/</a></li>
 	</ol>
 
 </body> 
